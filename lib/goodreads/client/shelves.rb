@@ -9,16 +9,15 @@ module Goodreads
       books = []
       unless reviews.nil?
         # one-book results come back as a single hash
-        reviews = [reviews] unless reviews.instance_of?(Array)
-        books = reviews.map { |e| Hashie::Mash.new(e) }
+        books = [reviews] unless reviews.instance_of?(Array)
       end
 
-      Hashie::Mash.new(
+      {
         start: data["reviews"]["start"].to_i,
         end: data["reviews"]["end"].to_i,
         total: data["reviews"]["total"].to_i,
         books: books
-      )
+      }
     end
   end
 end

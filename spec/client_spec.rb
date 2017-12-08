@@ -45,7 +45,7 @@ describe "Client" do
     it "returns book search results" do
       result = client.search_books("Rework")
 
-      expect(result).to be_a(Hashie::Mash)
+      expect(result).to be_a(Hash)
       expect(result).to respond_to(:query)
       expect(result).to respond_to(:total_results)
       expect(result).to respond_to(:results)
@@ -100,7 +100,7 @@ describe "Client" do
     it "returns review details" do
       review = client.review("166204831")
 
-      expect(review).to be_a(Hashie::Mash)
+      expect(review).to be_a(Hash)
       expect(review.id).to eq("166204831")
     end
 
@@ -127,7 +127,7 @@ describe "Client" do
     it "returns a list of reviews" do
       expect(subject).to be_an(Array)
       expect(subject.count).to eq(2)
-      expect(subject.first).to be_a(Hashie::Mash)
+      expect(subject.first).to be_a(Hash)
       expect(subject.first.keys).to include(*%w(book rating started_at read_at))
       expect(subject.map(&:id)).to eq(%w(1371624338 1371623371))
     end
@@ -160,7 +160,7 @@ describe "Client" do
     it "returns author details" do
       author = client.author("18541")
 
-      expect(author).to be_a(Hashie::Mash)
+      expect(author).to be_a(Hash)
       expect(author.id).to eq("18541")
       expect(author.name).to eq("Tim O'Reilly")
       expect(author.link).to eq("http://www.goodreads.com/author/show/18541.Tim_O_Reilly")
@@ -196,7 +196,7 @@ describe "Client" do
     it "returns author details" do
       author = client.author_by_name("Orson Scott Card")
 
-      expect(author).to be_a(Hashie::Mash)
+      expect(author).to be_a(Hash)
       expect(author.id).to eq("589")
       expect(author.name).to eq("Orson Scott Card")
       expect(author.link).to eq("http://www.goodreads.com/author/show/589.Orson_Scott_Card?utm_medium=api&utm_source=author_link")
@@ -209,7 +209,7 @@ describe "Client" do
     it "returns user details" do
       user = client.user("878044")
 
-      expect(user).to be_a(Hashie::Mash)
+      expect(user).to be_a(Hash)
       expect(user.id).to eq("878044")
       expect(user.name).to eq("Jan")
       expect(user.user_name).to eq("janmt")
@@ -236,7 +236,7 @@ describe "Client" do
     it "returns friend details" do
       friends = client.friends("878044")
 
-      expect(friends).to be_an_instance_of(Hashie::Mash)
+      expect(friends).to be_an_instance_of(Hash)
       expect(friends).to respond_to(:user)
       expect(friends.user.size).to eq(friends.end.to_i)
       expect(friends.user.first).to respond_to(:name)
@@ -308,7 +308,7 @@ describe "Client" do
     it "returns group details" do
       group = client.group("1")
 
-      expect(group).to be_a(Hashie::Mash)
+      expect(group).to be_a(Hash)
       expect(group.id).to eq("1")
       expect(group.title).to eq("Goodreads Feedback")
       expect(group.access).to eq("public")
@@ -325,7 +325,7 @@ describe "Client" do
     it "returns groups a given user is a member of" do
       group_list = client.group_list("1")
 
-      expect(group_list).to be_a(Hashie::Mash)
+      expect(group_list).to be_a(Hash)
       expect(group_list.total).to eq("107")
       expect(group_list.group.count).to eq(50)
       expect(group_list.group[0].id).to eq("1")

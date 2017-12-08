@@ -5,7 +5,7 @@ module Goodreads
     def author(id, params = {})
       params[:id] = id
       data = request("/author/show", params)
-      Hashie::Mash.new(data["author"])
+      data["author"]
     end
 
     # Search for an author by name
@@ -14,7 +14,7 @@ module Goodreads
       params[:id] = name
       name_encoded = URI.encode(name)
       data = request("/api/author_url/#{name_encoded}", params)
-      Hashie::Mash.new(data["author"])
+      data["author"]
     end
   end
 end

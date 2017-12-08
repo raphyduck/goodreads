@@ -1,6 +1,5 @@
 require "active_support/core_ext/hash"
 require "rest-client"
-require "hashie"
 
 module Goodreads
   module Request

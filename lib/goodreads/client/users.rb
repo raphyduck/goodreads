@@ -3,8 +3,7 @@ module Goodreads
     # Get user details
     #
     def user(id)
-      data = request("/user/show", id: id)
-      Hashie::Mash.new(data["user"])
+      request("/user/show", id: id)["user"]
     end
   end
 end
