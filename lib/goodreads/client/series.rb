@@ -3,7 +3,7 @@ module GoodReads
     # Get book details by Goodreads book ID
     #
     def series(id)
-      request("/series/show", id: id)['series_works']
+      request("/series/show", id: id)['series']
     end
   end
 end
